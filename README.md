@@ -12,3 +12,10 @@ cd node-js-express
 npm install
 npm start
 ```
+
+## Running Tests
+
+
+```sh
+npm test
+```
