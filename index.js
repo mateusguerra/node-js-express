@@ -1,12 +1,14 @@
-var express = require('express')
-var app = express()
+let express = require('express'),
+  app = express(),
+  port = process.env.PORT || 8080,
+  routes = require('./routes');
 
-app.set('port', (process.env.PORT || 8080))
+routes(app);
 
-app.get('/', function(request, response) {
-  response.send('Hello World!')
-})
+app.use(function(req, res) {
+  res.status(404).send(req.originalUrl + ' not found')
+});
 
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'))
-})
+app.listen(port);
+
+module.exports = app;
